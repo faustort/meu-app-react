@@ -49,7 +49,7 @@ export const PageLayout = () => {
 
     const lideComOMenu = () => {
       setAberto(!aberto); 
-    };
+    }; 
 
     return (
       <Box>
