@@ -11,22 +11,24 @@ import {
   Toolbar,
   Typography,
 } from "@mui/material";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useState } from "react";
 
 export const PageLayout = () => {
+  const navigate = useNavigate();
+
   const DrawerApp = () => (
     <Box style={{ minWidth: "260px" }}>
       <Typography variant="h5">Meu menu</Typography>
       <List>
         <ListItem>
-          <ListItemButton component="a" href="/">
+          <ListItemButton onClick={navigate("/")}>
             <ListItemText primary={"Home"} />
           </ListItemButton>
         </ListItem>
         <ListItem>
-          <ListItemButton component="a" href="/sobre">
+          <ListItemButton onClick={navigate("sobre")}>
             <ListItemText primary={"Sobre"} />
           </ListItemButton>
         </ListItem>
@@ -48,7 +50,7 @@ export const PageLayout = () => {
     const [aberto, setAberto] = useState(false);
 
     const lideComOMenu = () => {
-      setAberto(!aberto); 
+      setAberto(!aberto);
     };
 
     return (
@@ -61,10 +63,7 @@ export const PageLayout = () => {
           </Toolbar>
         </AppBar>
         <Box>
-          <Drawer 
-            open={aberto} 
-            onClose={lideComOMenu}
-          >
+          <Drawer open={aberto} onClose={lideComOMenu}>
             <DrawerApp />
           </Drawer>
         </Box>
